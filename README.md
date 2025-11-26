@@ -10,13 +10,24 @@ All steps are in jupyter notebooks with intermediate data files saved and reused
 
 <br>
 
+# Overview
+
+Includes 
+- cleaned neural spike data as primary input (```data/clean_spike_data.zip```)
+- example intermediate files 
+    - ```data/CEBRA_embedding_examples```
+    - ```data/persistence_diagram_examples```
+
 There are example intermediate data files provided in the ```data/``` folder, but all downstream intermediates can be generated from using ```clean_spike_data.zip``` located in ```data/```
 
-# Enviornment set-up
-use ```conda env create -f tda_environment.yml```
+# Enviornment set-up & requirements
+If using a machine with CUDA capabilities: ```conda env create -f tda_environment.yml``` & ```conda activate topology```
 
-**Note:** this pipeline uses CUDA-enabled NVIDIA GPU to train and handle CEBRA models.
+If using CPU: ```conda env create -f tda_environment_cpu.yml``` & ```conda activate topology_cpu```
+
 <br> To check GPU availability: ```import torch``` & ```torch.cuda.is_available()``` -> if ```False``` you may not be able to handle CEBRA models. There may be a CPU work-around, but that has not been tested with this pipeline.
+
+RAM: recommended at least 8GB
 
 # Running the pipeline
 
