@@ -93,12 +93,15 @@ class TDADataManager:
             'clean_spike_data_zip': data_root / 'clean_spike_data.zip',
             'clean_spike_data_dir': data_root / 'clean_spike_data',
             'cebra_examples': data_root / 'CEBRA_embedding_examples',
-            'persistence_examples': data_root / 'persistence_diagram_examples'
+            'persistence_examples': data_root / 'persistence_diagram_examples',
+            'all_dgms_zip': data_root / 'all_dgms.zip',  # New zip file
+            'all_dgms_dir': data_root / 'all_dgms'       # Extracted directory
         }
     
     def _extract_sample_data_if_needed(self) -> None:
-        """Extract sample data zip if it exists and hasn't been extracted yet."""
+        """Extract sample data zip files if they exist and haven't been extracted yet."""
 
+        # Extract clean_spike_data.zip
         zip_path = self.data_paths['clean_spike_data_zip']
         extract_dir = self.data_paths['clean_spike_data_dir']
         
@@ -110,7 +113,52 @@ class TDADataManager:
             except Exception as e:
                 warnings.warn(f"Failed to extract data: {e}")
         elif extract_dir.exists():
-            print("Data already available.")
+            print("Spike data already available.")
+        
+        # Extract all_dgms.zip
+        self._extract_all_dgms_if_needed()
+    
+    def _extract_all_dgms_if_needed(self) -> None:
+        """Extract all_dgms.zip if it exists and hasn't been extracted yet."""
+        
+        zip_path = self.data_paths['all_dgms_zip']
+        extract_dir = self.data_paths['all_dgms_dir']
+        
+        if zip_path.exists() and not extract_dir.exists():
+            print(f"Extracting persistence diagrams from {zip_path.name}...")
+            try:
+                with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                    zip_ref.extractall(self.data_paths['data_root'])
+                print(f"Extracted to: {extract_dir}")
+            except Exception as e:
+                warnings.warn(f"Failed to extract all_dgms.zip: {e}")
+        elif extract_dir.exists():
+            print("All persistence diagrams already available.")
+    
+    def get_all_persistence_files(self, pattern: str = "*.pkl") -> List[Path]:
+        """
+        Get all persistence diagram files from both persistence_examples and all_dgms directories.
+        
+        Args:
+            pattern: Glob pattern to match files (default: "*.pkl")
+        
+        Returns:
+            List of file paths from both directories
+        """
+        
+        files = []
+        
+        # Check persistence_examples directory
+        persistence_dir = self.data_paths['persistence_examples']
+        if persistence_dir.exists():
+            files.extend(list(persistence_dir.glob(pattern)))
+        
+        # Check all_dgms directory
+        all_dgms_dir = self.data_paths['all_dgms_dir']
+        if all_dgms_dir.exists():
+            files.extend(list(all_dgms_dir.rglob(pattern)))  # Recursive search
+        
+        return sorted(files)
     
     def get_available_datasets(self, pattern: str = "*.pkl") -> List[Tuple[str, Path]]:
         """
