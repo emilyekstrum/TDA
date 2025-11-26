@@ -16,7 +16,11 @@ Includes
 - cleaned neural spike data as primary input (```data/clean_spike_data.zip```)
 - example intermediate files 
     - ```data/CEBRA_embedding_examples```
+        - limited CERBA embeddings (3d & 8d for LGN & V1 color exchange)
     - ```data/persistence_diagram_examples```
+        - limited dgms examples (all dimensions, LGN & V1, color exchange, limited mice)
+    - ```data/all_dgms.zip```
+        - all persistence diagrams
 
 There are example intermediate data files provided in the ```data/``` folder, but all downstream intermediates can be generated from using ```clean_spike_data.zip``` located in ```data/```
 
