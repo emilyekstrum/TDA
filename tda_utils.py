@@ -4,7 +4,7 @@ Utilities for TDA
 allows for data input and handling across different OS in the TDA repo.
 
 @emilyekstrum
-11/25/25
+12/4/25
 """
 
 import os
@@ -94,8 +94,8 @@ class TDADataManager:
             'clean_spike_data_dir': data_root / 'clean_spike_data',
             'cebra_examples': data_root / 'CEBRA_embedding_examples',
             'persistence_examples': data_root / 'persistence_diagram_examples',
-            'all_dgms_zip': data_root / 'all_dgms.zip',  # new zip file
-            'all_dgms_dir': data_root / 'all_dgms'       # extracted directory
+            'all_dgms_zip': data_root / 'all_dgms.zip',  # zip file
+            'all_dgms_dir': data_root / 'all_dgms'       # extracted directory from zip
         }
     
     def _extract_sample_data_if_needed(self) -> None:
@@ -158,11 +158,10 @@ class TDADataManager:
         if all_dgms_dir.exists():
             files.extend(list(all_dgms_dir.rglob(pattern)))  # recursive search
         
-        # ALSO check for persistence diagram files directly in data root
-        # (since all_dgms.zip extracts files directly to data root, not to subdirectory)
+        # and check for persistence diagram files directly in data root
         data_root = self.data_paths['data_root']
         if data_root.exists():
-            # Look for files that match CEBRA pattern (these are persistence diagrams)
+            # look for files that match CEBRA pattern dgms files
             cebra_files = list(data_root.glob("CEBRA_*.pkl"))
             files.extend(cebra_files)
         
@@ -399,6 +398,22 @@ class TDADataManager:
             'filename': filepath.name,
             'stem': filepath.stem
         }
+    
+    def get_or_create_subdir(self, 
+                             parent_dir_key: str = 'data_root',
+                             subdirectory: str = 'outputs',
+                             create_if_missing: bool = True) -> Path:
+        """
+        Get or create a subdirectory within a specified parent directory."""
+
+        if parent_dir_key in self.data_paths:
+            parent_dir = self.data_paths[parent_dir_key]
+        else:
+            parent_dir = self.data_paths['data_root'] / parent_dir_key
+        subdir_path = parent_dir / subdirectory
+        if create_if_missing:
+            subdir_path.mkdir(parents=True, exist_ok=True)
+        return subdir_path
     
     def get_output_path(self, 
                        filename: str, 
