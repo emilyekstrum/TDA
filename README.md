@@ -27,7 +27,7 @@ There are example intermediate data files provided in the ```data/``` folder, bu
 # Enviornment set-up & requirements
 If using a machine with CUDA capabilities: ```conda env create -f tda_environment.yml``` & ```conda activate topology```
 
-If using CPU: ```conda env create -f tda_environment_cpu.yml``` & ```conda activate topology_cpu```
+If using CPU: ```conda env create -f tda_environment_cpu.yml``` & ```conda activate base```
 
 <br> To check GPU availability: ```import torch``` & ```torch.cuda.is_available()``` 
 
