@@ -106,7 +106,7 @@ class TDADataManager:
         extract_dir = self.data_paths['clean_spike_data_dir']
         
         if zip_path.exists() and not extract_dir.exists():
-            print(f"Extracting sample data from {zip_path.name}...")
+            print(f"Extracting sample data from {zip_path.name}")
             try:
                 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
                     zip_ref.extractall(self.data_paths['data_root'])
@@ -125,7 +125,7 @@ class TDADataManager:
         extract_dir = self.data_paths['all_dgms_dir']
         
         if zip_path.exists() and not extract_dir.exists():
-            print(f"Extracting persistence diagrams from {zip_path.name}...")
+            print(f"Extracting persistence diagrams from {zip_path.name}")
             try:
                 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
                     zip_ref.extractall(self.data_paths['data_root'])
@@ -290,7 +290,7 @@ class TDADataManager:
             filepath: Path to pickle file containing persistence diagrams
         
         Returns:
-            List of persistence diagrams [H0, H1, H2, ...]
+            List of persistence diagrams [H0, H1, & H2,]
         """
 
         filepath = Path(filepath)
