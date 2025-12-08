@@ -1,5 +1,10 @@
 # TDA for population neural activity
 
+### Topological data anaylsis for population neural activity in LGN and V1
+
+- for data collection and preprocessing details: https://doi.org/10.1101/2025.08.25.672226
+
+
 Pipeline for:
 1. Training CEBRA models (GPU/CUDA capabilities recommended)
 2. Running topological data analysis (TDA) using Ripser
@@ -9,9 +14,9 @@ Pipeline for:
 All steps are in jupyter notebooks with intermediate data files saved and reused in later notebooks
 
 
-# Overview
+## Overview
 
-Includes 
+Includes: 
 - cleaned neural spike data as primary input (```data/clean_spike_data.zip```)
 - example intermediate files 
     - ```data/CEBRA_embedding_examples```
@@ -23,7 +28,7 @@ Includes
 
 There are example intermediate data files provided in the ```data/``` folder, but all downstream intermediates can be generated from using ```clean_spike_data.zip``` located in ```data/```
 
-# Enviornment set-up & requirements
+## Enviornment set-up & requirements
 If using a machine with CUDA capabilities: ```conda env create -f tda_environment.yml``` & ```conda activate topology```
 
 If using CPU: ```conda env create -f tda_environment_cpu.yml``` & ```conda activate base```
@@ -32,7 +37,7 @@ If using CPU: ```conda env create -f tda_environment_cpu.yml``` & ```conda activ
 
 RAM: recommended at least 8GB
 
-# Running the pipeline
+## Running the pipeline
 
 All numerical steps in the notebooks should be ran sequentially in order. <br> If there are multiple processing options per step, choose the desired method and run the cell before moving on to the next.
 
