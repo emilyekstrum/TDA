@@ -10,7 +10,7 @@
     - generates neural activity embeddings
 2. Running topological data analysis (TDA) using Ripser**
     - constructs a Vietoris-Rips filtration on CEBRA embeddings
-3. Comparing topology across brain regions, stimuli, and embeddings
+3. Comparing topology of embeddings across brain areas, stimuli, & embedding dimensions
     - via persistence diagrams, persistence landscapes, persistence barcode, and betti curves
 
 All steps are in jupyter notebooks with intermediate data files that are saved and reused in subsequent notebooks
