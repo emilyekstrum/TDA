@@ -78,5 +78,7 @@ Other notebook:
 <br>
 *https://cebra.ai/docs/
 
+
 **https://ripser.scikit-tda.org/en/latest/index.html
+
 ***Gardner, R.J., Hermansen, E., Pachitariu, M. et al. Toroidal topology of population activity in grid cells. Nature 602, 123–128 (2022). https://doi.org/10.1038/s41586-021-04268-7
