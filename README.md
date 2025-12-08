@@ -16,7 +16,7 @@
 All steps are in jupyter notebooks with intermediate data files saved and reused in later notebooks
 
 
-## Data Overview
+## Data overview
 
 Includes: 
 - cleaned neural spike data as primary input (```data/clean_spike_data.zip```)
