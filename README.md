@@ -5,7 +5,7 @@
 - for data collection and preprocessing details: https://doi.org/10.1101/2025.08.25.672226
 
 
-**End-to-end pipeline for:**
+**Analysis pipeline for:**
 1. Training CEBRA* models (GPU/CUDA capabilities recommended)
     - generates neural activity embeddings
 2. Running topological data analysis (TDA) using Ripser**
