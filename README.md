@@ -36,34 +36,37 @@ RAM: recommended at least 8GB
 
 All numerical steps in the notebooks should be ran sequentially in order. <br> If there are multiple processing options per step, choose the desired method and run the cell before moving on to the next.
 
-1. 01_CEBRA_embeddings.ipynb
+1. ***01_CEBRA_embeddings.ipynb***
    - loads cleaned spike data tensors from \data\ folder
    - trains CEBRA models
    - saves embeddings to pickle files
    - visualize embeddings
      
-2. 02_Ripser.ipynb
+2. ***02_Ripser.ipynb***
    - loads embedding pickle files
    - computes persistence homology using Ripser
        - generates dgms - or persistence diagrams for each homology group (H0, H1, & H2)
    - plot dgms on a persistence diagram
    - saves dgms to pickle files
 
-3. 03_betti_curves.ipynb
+3. ***03_betti_curves.ipynb***
    - loads dgms pickle files
    - generates betti curves
          - plots betti numbers for each homology group during filtration
 
-4. 04_persistence_landscapes.ipynb
+4. ***04_persistence_landscapes.ipynb***
     - loads dgms pickle files
     - computes average persistence landscapes across embeddings, regions, & stimuli
          - persistence landscape is a vectorized representation of a persistence diagram. these plots are assumed to be more stable than betti curves and displays topological features as functions. often used as input to downstream pipelines like machine learning predictive models or statistical analyses.
            
 <br>
+
 Other notebook:
-Persistence_barcodes.ipynb
+***Persistence_barcodes.ipynb*** 
+
   - uses fuzzy UMAP algorithm from Gardner et al* to generate persistence barcodes
   - does not generate embeddings but rather constructs a UMAP neighborhood graph for input into Ripser
 
 <br>
+
 *Gardner, R.J., Hermansen, E., Pachitariu, M. et al. Toroidal topology of population activity in grid cells. Nature 602, 123–128 (2022). https://doi.org/10.1038/s41586-021-04268-7
