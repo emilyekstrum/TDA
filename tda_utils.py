@@ -1,10 +1,13 @@
 """
-Utilities for TDA repo
+File management system utilities for TDA repo
 
-allows for data input and handling across different OS in the TDA repo.
+data input and handling across different OS in the TDA repo.
+- CPU and CUDA compatibility for loading models
+- automatic extraction of sample data zips
+- standardized data paths and loading functions
 
 @emilyekstrum
-12/9/25
+12/11/25
 """
 
 import os
