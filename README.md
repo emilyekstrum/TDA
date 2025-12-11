@@ -70,7 +70,7 @@ All numerical steps in the notebooks should be executed in order. <br> If there 
 <br>
 
 Other notebook:
-***Persistence_barcodes.ipynb*** 
+***persistence_barcodes.ipynb*** 
 
   - fuzzy UMAP algorithm from Gardner et al*** to generate persistence barcodes
   - does not generate embeddings but rather constructs a UMAP neighborhood graph for input into Ripser
