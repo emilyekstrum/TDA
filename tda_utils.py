@@ -130,8 +130,11 @@ class TDADataManager:
         if zip_path.exists() and not extract_dir.exists():
             print(f"Extracting persistence diagrams from {zip_path.name}")
             try:
+                # Create the extraction directory first
+                extract_dir.mkdir(parents=True, exist_ok=True)
+                
                 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-                    zip_ref.extractall(self.data_paths['data_root'])
+                    zip_ref.extractall(extract_dir)
                 print(f"Extracted to: {extract_dir}")
             except Exception as e:
                 warnings.warn(f"Failed to extract all_dgms.zip: {e}")
